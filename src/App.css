@@ -1,38 +1,46 @@
-.App {
+
+#root{
+  display: flex;
+  background-color: black;
+  color: white;
+  font-family: Lobster;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+  margin: 0 auto;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title{
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.title--time{
+  font-family: 'Russo One', sans-serif;
+  font-size: 50px;
+}
+
+.carousel{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 300px;
+  height: 400px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+
+.fader{
+  animation: 3s fade 1s;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes fade{
+  0%{
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  100%{
+    opacity: 1;
   }
 }

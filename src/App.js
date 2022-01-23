@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
-import Timer from './components/Timer';
+import Date from './components/Date';
+import Time from './components/Time'
+import Carousel from './components/Carousel';
+import Weather from './components/Weather';
 
 function App() {
   return (
     <div className="App">
-      <Timer />
+      <Time />
+      <Date />
+      <Weather />
+      <section className="carousel">
+        <Carousel />
+      </section>
     </div>
   );
 }
