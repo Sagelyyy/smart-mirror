@@ -1,0 +1,111 @@
+
+*{
+  margin: 0;
+}
+
+
+body{
+  background-color: black;
+}
+
+#root{
+  background-color: black;
+  color: white;
+  font-family: 'Roboto';
+  text-align: center;
+  font-weight: 400;
+}
+
+.App{
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.header{
+  display: flex;
+  justify-content: space-around;
+}
+
+.title{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 30px;
+  height: 50px;
+}
+
+.title--greeting{
+  font-weight: 400;
+}
+
+.title--day{
+  font-weight: lighter;
+}
+
+.title--time{
+  align-self: flex-end;
+  font-size: 50px;
+}
+
+.date--count{
+  display: flex;
+  flex-direction: row;
+  width: 92%;
+  justify-content: flex-end;
+  font-weight: lighter;
+}
+
+.weather--card{
+  display: flex;
+  flex-flow: column wrap;
+  width: 400px;
+  height: 200px;
+  align-items: flex-start;
+}
+
+.weather--city{
+  flex-grow: 10;
+}
+
+.weather--temp{
+  font-size: 50px;
+}
+
+.carousel{
+  display: flex;
+  max-width: 300px;
+  height: 350px;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.affirmation{
+  display: flex;
+  margin-top: 20px;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 15vw;
+  font-weight: normal;
+}
+
+.wi{
+  font-size: 100px;
+}
+
+
+.fader{
+  animation: 3s fade 1s;
+
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}

@@ -37,7 +37,9 @@ export default class Time extends React.Component{
     greeting(){
         if (moment().format("a")=== 'am'){
             return 'Morning'
-        }
+        } else if(moment().format("a") === 'pm' && moment().format('hh') > 1 && moment().format('hh') <= 3){
+                return 'Afternoon'
+            }
         return 'Evening'
     }
 
@@ -45,7 +47,7 @@ export default class Time extends React.Component{
         return(
             <div className="title">
                 <h1 className="title--greeting">{`Good ${this.greeting()} Babe-o!`}</h1>
-                <h2 className="title--day">{`Today is ${this.state.day}, ${this.state.date}`}</h2>
+                <h3 className="title--day">{`Today is ${this.state.day}, ${this.state.date}`}</h3>
                 <h2 className="title--time">{`${this.state.time}`}</h2>
             </div>
         )

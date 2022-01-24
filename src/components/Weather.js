@@ -9,6 +9,7 @@ export default class Weather extends React.Component{
         super(props);
         this.state ={
             cityName: "Hudson, NH",
+            cityIcon: "",
             cityTemp: "",
             cityDesc: "",
             cityFeelsLike: "",
@@ -27,18 +28,6 @@ export default class Weather extends React.Component{
 
     async parseData(){
         let cityData = await this.fetchWeatherData()
-        console.log(cityData)
-        // myCity.name = cityData.name
-        // myCity.temp = cityData.main.temp;
-        // myCity.temp_min = cityData.main.temp_min;
-        // myCity.temp_max = cityData.main.temp_max;
-        // myCity.pressure = cityData.main.pressure;
-        // myCity.humidity = cityData.main.humidity;
-        // myCity.feels_like = cityData.main.feels_like;
-        // myCity.weather = cityData.weather[0].description;
-        // myCity.asOf = convertTimeStamp(cityData.dt);
-        // myCity.sunrise = convertTimeStamp(cityData.sys.sunrise);
-        // myCity.sunset = convertTimeStamp(cityData.sys.sunset);
         return await cityData
     }
 
@@ -46,20 +35,26 @@ export default class Weather extends React.Component{
         this.parseData()
         .then(response => this.setState({
             cityName: "Hudson, NH",
+            cityIcon: response.weather[0].id,
             cityTemp: response.main.temp,
             cityDesc: response.weather[0].description,
             cityFeelsLike: response.main.feels_like
-
         }))
+        this.timerID = setInterval(() => this.parseData(), 1800000)
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timerID)
     }
 
     render(){
         return(
             <div className="weather--card">
-                <p className="weather--city">{this.state.cityName}</p>
-                <p className="weather--temp">{Math.floor(this.state.cityTemp)}°F</p>
+                <h1 className="weather--city">{this.state.cityName}</h1>
+                <h1 className="weather--temp">{Math.floor(this.state.cityTemp)}°F<span> <i className={`wi wi-owm-${this.state.cityIcon}`}></i></span></h1>
                 <p className="weather--feels">Feels like {Math.floor(this.state.cityFeelsLike)}°F</p>
                 <p className="weather--desc">{this.state.cityDesc}</p>
+                
             </div>
         )
     }
