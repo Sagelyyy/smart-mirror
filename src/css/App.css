@@ -31,8 +31,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 30px;
-  height: 50px;
+  gap: 10px;
 }
 
 .title--greeting{
@@ -44,11 +43,12 @@ body{
 }
 
 .title--time{
-  align-self: flex-end;
+  align-self: flex-start;
   font-size: 50px;
 }
 
 .date--count{
+
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -58,14 +58,13 @@ body{
 }
 
 .date--text{
-  margin-right: 40px;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 
 .weather--card{
   display: flex;
   flex-flow: column wrap;
-  width: 400px;
-  height: 200px;
   align-items: flex-start;
 }
 
@@ -86,6 +85,11 @@ body{
   margin-top: 100px;
 }
 
+.carousel--photo{
+  border-radius: 10px;
+}
+
+
 .affirmation{
   display: flex;
   margin-top: 20px;
@@ -101,7 +105,9 @@ body{
 
 
 .fader{
-  animation: 3s fade 1s;
+  animation: fade ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 
 }
 

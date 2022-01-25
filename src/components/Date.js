@@ -14,10 +14,10 @@ export default class Timer extends React.Component {
 
     switch (months) {
       default:
-        return <h4 className="date--text">{`Dating your babe-o for ${years} and counting...`}</h4>;
+        return <h2 className="date--text">{`Dating your babe-o for ${years} and counting...`}</h2>;
       case 1:
         return (
-          <h4 className="date--text">{`Dating your babe-o for ${years} and ${months} month and counting...`}</h4>
+          <h2 className="date--text">{`Dating your babe-o for ${years} and ${months} month and counting...`}</h2>
         );
       case 2:
       case 3:
@@ -31,7 +31,7 @@ export default class Timer extends React.Component {
       case 11:
       case 12:
         return (
-          <h4 className="date--text">{`Dating your babe-o for ${years} and ${months} months and counting...`}</h4>
+          <h2 className="date--text">{`Dating your babe-o for ${years} and ${months} months and counting...`}</h2>
         );
     }
   }

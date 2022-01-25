@@ -39,9 +39,9 @@ export default class Weather extends React.Component{
             cityTemp: response.main.temp,
             cityDesc: response.weather[0].description,
             cityFeelsLike: response.main.feels_like
-        }))
+        }, () => console.log(this.state.cityTemp)))
         this.timerID = setInterval(() => this.parseData(), 1800000)
-    }
+    } 
 
     componentWillUnmount(){
         clearInterval(this.timerID)
@@ -51,8 +51,8 @@ export default class Weather extends React.Component{
         return(
             <div className="weather--card">
                 <h1 className="weather--city">{this.state.cityName}</h1>
-                <h1 className="weather--temp">{Math.floor(this.state.cityTemp)}°F<span> <i className={`wi wi-owm-${this.state.cityIcon}`}></i></span></h1>
-                <p className="weather--feels">Feels like {Math.floor(this.state.cityFeelsLike)}°F</p>
+                <h1 className="weather--temp">{Math.round(this.state.cityTemp)}°F<span> <i className={`wi wi-owm-${this.state.cityIcon}`}></i></span></h1>
+                <p className="weather--feels">Feels like {Math.round(this.state.cityFeelsLike)}°F</p>
                 <p className="weather--desc">{this.state.cityDesc}</p>
                 
             </div>
