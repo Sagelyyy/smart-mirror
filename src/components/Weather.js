@@ -28,11 +28,6 @@ export default class Weather extends React.Component{
 
     async parseData(){
         let cityData = await this.fetchWeatherData()
-        return await cityData
-    }
-
-    componentDidMount(){
-        this.parseData()
         .then(response => this.setState({
             cityName: "Hudson, NH",
             cityIcon: response.weather[0].id,
@@ -40,6 +35,11 @@ export default class Weather extends React.Component{
             cityDesc: response.weather[0].description,
             cityFeelsLike: response.main.feels_like
         }, () => console.log(this.state.cityTemp)))
+        return await cityData
+    }
+
+    componentDidMount(){
+        this.parseData()
         this.timerID = setInterval(() => this.parseData(), 1800000)
     } 
 
