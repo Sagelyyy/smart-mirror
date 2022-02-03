@@ -34,7 +34,7 @@ export default class Weather extends React.Component{
             cityTemp: response.main.temp,
             cityDesc: response.weather[0].description,
             cityFeelsLike: response.main.feels_like
-        }, () => console.log(this.state.cityTemp)))
+        }))
         return await cityData
     }
 
