@@ -12,7 +12,7 @@ export default function Date() {
     ))
     const [days, setDays] = React.useState(0)
  
-    console.log(Math.floor(moment().diff(firstDate, 'days')   / 24))
+    console.log(Math.floor(moment().diff(firstDate, 'days') / 24))
 
   return (
     <h2 className="date--text">Together with your babe-o for {`${years}`} {months > 0 ? `and ${months} ${months === 1 ? "month" : "months"} and counting` : ""}</h2>
