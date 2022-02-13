@@ -1,7 +1,5 @@
 import React from "react";
-
 const apiKey = "f9b983c1b948fbd3a11a09e986af5edf";
-const error = "something went wrong"
 
 
 export default function Weather(){
@@ -32,7 +30,7 @@ export default function Weather(){
             fetchWeather()
         }, 1800000)
 
-        return () => clearInterval(interval)
+        return() => clearInterval(interval)
 
     },[])
 

@@ -1,53 +1,31 @@
 import React from "react";
-const error = "something went wrong"
 
+export default function Affirmation() {
 
+const [affirmation, setAffirmation] = React.useState({affirm: ''})
 
-export default class Affirmation extends React.Component{
+function fetchAffirmData(){
+    const url = `https://thingproxy.freeboard.io/fetch/https://www.affirmations.dev/`;
+    fetch(url, {mode: 'cors'})
+        .then(response => response.json())
+        .then(data => setAffirmation({affirm: data.affirmation}))
+}
 
-    constructor(props){
-        super(props);
-        this.state ={
-            affirm: ""
-        }
-    }
+React.useEffect(() => {
+    fetchAffirmData()
+    const interval = setInterval(() => {
+        fetchAffirmData()
+    }, 86400000);
 
-    async fetchAffirmationData(){
-        const url = `https://thingproxy.freeboard.io/fetch/https://www.affirmations.dev/`;
-        const myHeaders = new Headers();
-        myHeaders.append('Accept', 'application/json')
-        try{
-        const response = fetch(url, { mode: 'cors'})
-        return await ( await response).json()
-        }catch{
-            console.log(error)
-        }
-    }
+    return() => clearInterval(interval)
 
-    async parseData(){
-        let affirmData = await this.fetchAffirmationData()
-        .then(response => this.setState({
-            affirm: response.affirmation
-         }))
-        return await affirmData
-    }
+},[])
 
-    componentDidMount(){
-        this.parseData()
-        this.timerID = setInterval( () => 
-        this.parseData(), 86400000)
-    }
+  return (
+    <div>
+      <h3>Your Daily Affirmation:</h3>
+      <h4>{affirmation.affirm}</h4>
+    </div>
+  );
 
-    componentWillUnmount(){
-        clearInterval(this.timerID)
-    }
-
-    render(){
-        return(
-            <div>
-                <h3>Your Daily Affirmation:</h3>
-                <h4>{this.state.affirm}</h4>
-            </div>
-        )
-    }
 }
