@@ -2,18 +2,24 @@ import React from "react";
 import memories from "../imgData";
 
 export default function Carousel() {
-  const photoMax = memories.length - 1;
+  const images = importAll(require.context('../images', false, /\.(png|jpe?g|svg)$/));
+  const photoMax = images.length - 1;
   let currPhoto = 0;
+  let listOfImages = [];
 
-  const [carouselImg, setCarouselimg] = React.useState(memories[0].src);
+  function importAll(r) {
+    return r.keys().map(r);
+  }
+
+  const [carouselImg, setCarouselimg] = React.useState(images[0]);
 
   function getNextPhoto() {
     if (currPhoto === photoMax) {
       currPhoto = 0;
-      return memories[0].src;
+      return images[0];
     }
     currPhoto = currPhoto + 1;
-    return memories[currPhoto].src;
+    return images[currPhoto];
   }
 
   function refreshPhoto() {
