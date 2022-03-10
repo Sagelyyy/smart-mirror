@@ -5,16 +5,16 @@ moment().format();
 export default function Time() {
 
   const [clock, setClock] = React.useState({
-      time: moment().format("hh:mm:ss a"),
-      day: moment().format("dddd"),
-      date: moment().format("LL"),
+    time: moment().format("hh:mm:ss a"),
+    day: moment().format("dddd"),
+    date: moment().format("LL"),
   })
 
   const [greeting, setGreeting] = React.useState('')
 
-    function tick() {
-      getGreeting()
-      setClock({
+  function tick() {
+    getGreeting()
+    setClock({
       time: moment().format("hh:mm:ss a"),
       day: moment().format("dddd"),
       date: moment().format("LL"),
@@ -22,16 +22,21 @@ export default function Time() {
   }
 
   function getGreeting() {
-    if (moment().format("a") === "am") {
-      setGreeting("Morning");
-    } else if (
-      moment().format("a") === "pm" &&
-      moment().format("hh") > 1 &&
-      moment().format("hh") <= 3
-    ) {
-      setGreeting("Afternoon");
+    let timeOfDay = moment().format("a")
+    let hourOfDay = moment().format("hh")
+    switch (timeOfDay) {
+      case "am":
+        setGreeting("Morning")
+        break;
+      case "pm":
+        if (hourOfDay >= 1 && hourOfDay <= 3) {
+          setGreeting("Afternoon")
+          break;
+        }
+      default:
+        setGreeting("Evening")
+        break;
     }
-    setGreeting("Evening");
   }
 
   React.useState(() => {
@@ -39,7 +44,7 @@ export default function Time() {
       tick()
     }, 1000)
     return () => clearInterval(interval)
-  }, [])
+  })
 
   return (
     <div className="title">
