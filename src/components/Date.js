@@ -14,11 +14,12 @@ export default function Date() {
 
   React.useEffect(() => {
     //timer set to refresh every 12 hours
+    //43200000
     const timerId = setInterval(refreshDates, 43200000);
     return function cleanup() {
       clearInterval(timerId);
     };
-  }, []);
+  });
 
   function refreshDates() {
     setYears(moment(firstDate).fromNow(true))

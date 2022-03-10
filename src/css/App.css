@@ -59,7 +59,8 @@ body{
 .date--text{
   margin: 0 auto;
   margin-top: 150px;
-  font-size: 25px;
+  font-size: 20px;
+  word-wrap: break-word;
   
 }
 
@@ -84,7 +85,7 @@ body{
 
 .carousel{
   display: flex;
-  max-width: 300px;
+  max-width: 250px;
   height: 750px;
   justify-content: center;
   margin: 0 auto;
