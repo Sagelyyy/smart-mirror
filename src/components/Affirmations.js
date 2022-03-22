@@ -1,20 +1,19 @@
 import React from "react";
+import affData from "../affirmationData";
 
 export default function Affirmation() {
 
 const [affirmation, setAffirmation] = React.useState({affirm: ''})
 
-function fetchAffirmData(){
-    const url = `https://thingproxy.freeboard.io/fetch/https://www.affirmations.dev/`;
-    fetch(url, {mode: 'cors'})
-        .then(response => response.json())
-        .then(data => setAffirmation({affirm: data.affirmation}))
+function getRandAff(){
+  const randAff = affData[Math.floor(Math.random()*affData.length)]
+  setAffirmation({affirm: randAff})
 }
 
 React.useEffect(() => {
-    fetchAffirmData()
+  getRandAff()
     const interval = setInterval(() => {
-        fetchAffirmData()
+      getRandAff()
     }, 86400000);
 
     return() => clearInterval(interval)
